@@ -2081,7 +2081,13 @@ function createDots() {
         dots.push(new Dot(x, y, z, i, items[i]));
     }
 
-    document.getElementById('nodeCount').textContent = count;
+    const nodeCountEl = document.getElementById('nodeCount');
+    if (currentLevel === 'companies') {
+        const left = 1000 - count;
+        nodeCountEl.textContent = `${count} (${left} left)`;
+    } else {
+        nodeCountEl.textContent = count;
+    }
 }
 
 function rebuildSphere() {
